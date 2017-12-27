@@ -84,6 +84,9 @@ const fetchBeer = app => {
   console.log('BEER: ', beer);
   getBeers(beer)
     .then(arr => {
+      if (arr.length === 0) {
+        app.ask('I\'m sorry, I couldn\'t find any information on that beer.  Is there another beer I can help you with?')
+      }
       console.log('Arr: ', arr);
       currentBeer = arr[0].name
       if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
